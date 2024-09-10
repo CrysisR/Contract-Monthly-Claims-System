@@ -1,0 +1,9 @@
+﻿<br />
+<div class="col-md-4 mx-auto">
+<h1>Welcome @User.Identity?.Name</h1>
+<form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("LoginOrRegister", "Home", new { area = "" })" method="post" class="align-content-end">
+    <button id="logout" type="submit" class="btn btn-danger text-light border-0">Logout</button>
+</form>
+<br />
+<a class="btn btn-primary" asp-controller="Claims" asp-action="ListLecturerClaims">See all past claims</a>
+</div>

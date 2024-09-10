@@ -1,0 +1,81 @@
+﻿@model PROG6212POE.Models.Claims
+@{
+    ViewData["Title"] = "Claims";
+}
+<partial name="_Toastr"/>
+<br />
+<div class="col-md-3 mx-auto">
+    <h2>Create claim</h2>
+    <hr />
+    <br />
+</div>
+<div class="col-md-3 mx-auto">
+    <form asp-action="ClaimSubmitted" method="post" enctype="multipart/form-data" id="claimsForm">
+        <label>Lecturer Information</label>
+        <div class="form-group">
+            <input asp-for="LecturerId" class="form-control" required placeholder="Lecturer ID" />
+                    <span asp-validation-for="LecturerId" class="text-danger"/>
+           
+        </div>
+        <br />
+        <div class="form-group">
+            <input asp-for="FirstName" class="form-control" required placeholder="First Name" />
+                    <span asp-validation-for="FirstName" class="text-danger" />
+           
+        </div>
+        <br />
+        <div class="form-group">
+            <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+                    <span asp-validation-for="LastName" class="text-danger" required />
+           
+        </div>
+        <br />
+        <label>Claims Dates</label>
+        <br />
+        <label>Start date</label>
+        <div class="form-group">
+            <input asp-for="ClaimsPeriodStart" type="date" class="form-control" required placeholder="Start Date" />
+                    <span asp-validation-for="ClaimsPeriodStart" class="text-danger" />
+           
+        </div>
+        <br />
+        <label>End date</label>
+        <div class="form-group">
+            <input asp-for="ClaimsPeriodEnd" type="date" class="form-control" required placeholder="End Date" />
+                    <span asp-validation-for="ClaimsPeriodEnd" class="text-danger" />
+           
+        </div>
+        <br />
+        <label>Cost</label>
+        <div class="form-group">
+            <input asp-for="HoursWorked" class="form-control" id="hoursWorked" required placeholder="Total work hours" />
+                    <span asp-validation-for="HoursWorked" class="text-danger" />
+           
+        </div>
+        <br />
+        <div class="form-group">
+            <input asp-for="RatePerHour" class="form-control" id="ratePerHour" required placeholder="Rate per hour (R)" />
+                    <span asp-validation-for="RatePerHour" class="text-danger" />
+           
+        </div>
+        <br />
+        <div class="form-group">
+            <textarea asp-for="DescriptionOfWork" class="form-control" required placeholder="Description of claim (Expand)"></textarea>
+                        <span asp-validation-for="DescriptionOfWork" class="text-danger" />
+           
+        </div>
+        <br />
+        <label>Documents</label>
+        <div class="form-group">
+            <input asp-for="SupportingDocuments" type="file" multiple class="form-control" required />
+        </div>
+        <br />
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+@section scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
